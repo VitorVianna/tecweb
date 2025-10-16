@@ -28,5 +28,15 @@
                 <div *ngIf="error()" class="alert alert-danger mt-3" role="alert">
                     {{ error() }}
                 </div>
+                <div class="d-grid mt-2">
+                    <a (click)="redirecionaCadastro" class="btn btn-secondary">
+                        Cadastre-se
+                    </a>
+                </div>
+                <div class="d-grid mt-2">
+                    <a routerLink="/formulario" class="btn btn-secondary">
+                        Cadastre-se
+                    </a>
+                </div>
             </form>
         </div>

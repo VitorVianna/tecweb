@@ -1,13 +1,13 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router'; 
+import { Router, ActivatedRoute, RouterModule } from '@angular/router'; 
 import { AuthService } from '../services/auth.service';
 
 @Component({
   standalone: true,
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule,RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -40,12 +40,17 @@ export class LoginComponent {
         this.loading.set(false);
         return;
       }
-      var token = await this.authService.login({email, senha});
-      alert('Login realizado com sucesso. Token: ' + token);
+      await this.authService.login({email, senha});
+      this.router.navigate(['/lista-usuario']);
     }catch(err:any){
       this.error.set(err.message || 'Erro ao realizar login');
     }finally{
       this.loading.set(false);
     }
   } 
+
+  get redirecionaCadastro(){
+    this.router.navigate(['/formulario']);
+    return true;
+  }
 }
