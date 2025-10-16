@@ -17,13 +17,9 @@ export class ListaUsuarioComponent implements OnInit{
   
   ngOnInit(): void {
     this.usuarioService.get().subscribe({
-      next: (data) => {
-        this.usuarios = data ?? [];
-      },
-      error: (erro) => {
-        alert("Erro ao buscar usuários: " + erro);
-      }
-    })
+      next: (data) => { this.usuarios = data ?? [];},
+      error: (err) => {alert('Erro ao carregar usuários: '+err);}
+    });
   }
 
 }
