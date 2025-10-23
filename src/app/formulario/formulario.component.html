@@ -13,6 +13,24 @@
         </div>
 
         <div class="mb-3">
+          <label for="cpf" class="form-label">Entre com o seu CPF:</label>
+          <input type="text" class="form-control" id="cpf"
+                 placeholder="Digite seu CPF" formControlName="cpf">
+        </div>
+
+        <div class="mb-3">
+          <label for="rg" class="form-label">Entre com o seu RG:</label>
+          <input type="text" class="form-control" id="rg"
+                 placeholder="Digite seu RG" formControlName="rg">
+        </div>
+
+        <div class="mb-3">
+          <label for="dataNascimento" class="form-label">Entre com a sua Data de Nascimento:</label>
+          <input type="text" class="form-control" id="dataNascimento"
+                 placeholder="Digite sua Data de Nascimento" formControlName="dataNascimento">
+        </div>
+
+        <div class="mb-3">
           <label for="email" class="form-label">Entre com o seu email:</label>
           <input type="email" class="form-control" id="email"
                  placeholder="Digite seu email" required formControlName="email"
@@ -59,21 +77,6 @@
                 </li>
             </ul>
         </div>
-
-        <div class="mb-3">
-          <label class="form-label">CEP: </label>
-          <input type="text" class="form-control" id="txtCep"
-                 formControlName="cep">
-        </div>
-        <div class="mb-3">
-          <button type="button" class="btn btn-info" (click)="carregarEndereco">Buscar</button>
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Logradouro: </label>
-          <input type="text" class="form-control" id="txtLogradouro"
-                 formControlName="logradouro">
-        </div>
-
         <div class="d-grid">
           <button type="submit" class="btn btn-success">Cadastrar</button>
         </div>
@@ -81,11 +84,6 @@
           <a routerLink="/login" class="btn btn-secondary">
             Já possui conta? Acesse aqui!
           </a>
-        </div>
-        <div class="d-grid mt-2">
-          <button type="button" class="btn btn-info" [routerLink]="['/usuarios']">
-            Lista de usuários
-          </button>
         </div>
       </form>
     </div>

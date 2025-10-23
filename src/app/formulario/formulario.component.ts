@@ -6,6 +6,9 @@ import { Endereco } from '../models/endereco.model';
 import { EnderecoService } from '../services/endereco.service';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { UsuarioRequest } from '../models/usuario.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -20,7 +23,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   styleUrl: './formulario.component.css'
 })
 export class FormularioComponent {
-
+  private authService = inject(AuthService);
+  private router = inject(Router);
   passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
 
   emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
@@ -43,20 +47,12 @@ export class FormularioComponent {
     email : new FormControl('', [Validators.required, Validators.pattern(this.emailRegex)]), //campo 'email'
     senha : new FormControl('', [Validators.required, Validators.pattern(this.passwordRegex)]), //campo 'senha'
     verificaSenha: new FormControl(''),
-    cep: new FormControl(''),
-    logradouro: new FormControl({value:'', disabled: true})
+    rg: new FormControl(''),
+    cpf: new FormControl(''),
+    dataNascimento: new FormControl('')
   });
 
-  private enderecoService = inject(EnderecoService);
-  get carregarEndereco(){
-    const cep = this.form.get('cep')?.value ?? '';
-    this.enderecoService.getEndereco(cep).subscribe(endereco =>{
-      this.form.get('logradouro')?.setValue(endereco.logradouro);
-    });
-
-    return true;
-  }
-
+  
   // Método de validação da senha
   validatePassword() {
     const password = this.form.get('senha')?.value ?? '';
@@ -89,13 +85,23 @@ export class FormularioComponent {
   }
 
   //capturar do evento submit
-  onSubmit() {
+  async onSubmit() {
     if (this.form.valid) {
-      alert("Formulário Válido");
-      console.log('Formulário válido:', this.form.value);
+
+      const request: UsuarioRequest = {
+        nome: this.form.get('nome')?.value ?? '',
+        email: this.form.get('email')?.value ?? '',
+        dataNascimento: this.form.get('dataNascimento')?.value ?? '',
+        rg: this.form.get('rg')?.value ?? '',
+        cpf: this.form.get('cpf')?.value ?? '',
+        senha: this.form.get('senha')?.value ?? ''
+      };
+
+      await this.authService.post(request);
+      alert("Usuário cadastrado com sucesso.");
+      this.router.navigate(['/login']);
     } else {
-      alert("Formulário Inválido");
-      console.log('Formulário Inválido!', this.form.value);
+      alert("Formulário Inválido.");
     }
   }
 
