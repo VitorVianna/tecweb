@@ -22,4 +22,11 @@ export class ListaUsuarioComponent implements OnInit{
     });
   }
 
+  getUserById(id: number){
+    this.usuarioService.getById(id).subscribe({
+      next: (data) => { alert("Usuário encontrado: " + JSON.stringify(data));},
+      error: (err) => {alert("Erro ao carregar usuário: " + err)}
+    })
+  }
+
 }

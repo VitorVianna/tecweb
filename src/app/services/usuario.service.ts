@@ -18,4 +18,13 @@ export class UsuarioService{
 
         return this.httpClient.get<Usuario[]>(environment.apiContatos + '/usuarios', {headers});
     }
+
+    getById(id: number): Observable<Usuario>{
+        const token = this.tokenService.get();
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer '+token
+        });
+
+        return this.httpClient.get<Usuario>(environment.apiContatos + '/usuarios/' + id, {headers});
+    }
 }
