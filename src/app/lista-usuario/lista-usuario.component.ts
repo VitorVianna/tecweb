@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { UsuarioService } from '../services/usuario.service';
 import { Usuario } from '../models/usuario.model';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -12,7 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ListaUsuarioComponent implements OnInit{
   private usuarioService = inject(UsuarioService);
-
+  private router = inject(Router);
   usuarios: Usuario[] = [];
   
   ngOnInit(): void {
@@ -22,11 +23,11 @@ export class ListaUsuarioComponent implements OnInit{
     });
   }
 
-  getUserById(id: number){
-    this.usuarioService.getById(id).subscribe({
-      next: (data) => { alert("Usuário encontrado: " + JSON.stringify(data));},
-      error: (err) => {alert("Erro ao carregar usuário: " + err)}
-    })
+  abrirEdicao(id: number){
+    
+    this.router.navigate(['/edicao-usuario',id]);
+
+    
   }
 
 }
