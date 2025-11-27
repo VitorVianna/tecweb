@@ -24,10 +24,14 @@ export class ListaUsuarioComponent implements OnInit{
   }
 
   abrirEdicao(id: number){
-    
     this.router.navigate(['/edicao-usuario',id]);
+  }
 
-    
+  deletarUsuario(id: number, nomeUsuario: string){
+    if(confirm('Tem certeza que deseja deletar '+nomeUsuario+'?')){
+      this.usuarioService.delete(id);
+      this.ngOnInit();
+    }
   }
 
 }

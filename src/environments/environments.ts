@@ -1,4 +1,4 @@
 export const environment = {
     apiCep: 'http://viacep.com.br/ws/',
-    apiContatos: 'http://academico3.rj.senac.br/agendacontatosapi/api'
+    apiContatos: 'http://localhost:3000/api'
 }

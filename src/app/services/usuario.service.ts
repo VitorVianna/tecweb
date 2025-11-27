@@ -39,4 +39,16 @@ export class UsuarioService{
             throw err;
         }
     }
+
+    delete(id: number): void{
+        const token = this.tokenService.get();
+        const headers = new HttpHeaders({
+            Authorization: 'Bearer '+token
+        });
+        try{
+            this.httpClient.delete(environment.apiContatos + '/usuarios/'+ id,{headers}).subscribe();
+        }catch(err){
+            throw err;
+        }
+    }
 }
