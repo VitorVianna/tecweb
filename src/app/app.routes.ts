@@ -4,6 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { FormularioComponent } from './formulario/formulario.component';
 import { ListaUsuarioComponent } from './lista-usuario/lista-usuario.component';
 import { EdicaoUsuarioComponent } from './edicao-usuario/edicao-usuario.component';
+import { EnderecoUsuarioComponent } from './endereco-usuario/endereco-usuario.component';
+import { ContatoUsuarioComponent } from './contato-usuario/contato-usuario.component';
 
 export const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -11,5 +13,7 @@ export const routes: Routes = [
     { path: 'formulario', component: FormularioComponent },
     { path: 'lista-usuario', component: ListaUsuarioComponent, canActivate: [authGuard]},
     { path: 'edicao-usuario/:id', component: EdicaoUsuarioComponent, canActivate: [authGuard]},
-    { path: '**', redirectTo: 'login' },
+    { path: 'endereco-usuario/:id', component: EnderecoUsuarioComponent, canActivate: [authGuard]},
+    { path: 'contato-usuario/:id', component: ContatoUsuarioComponent, canActivate: [authGuard]},
+    { path: '**', redirectTo: 'login' }
 ];

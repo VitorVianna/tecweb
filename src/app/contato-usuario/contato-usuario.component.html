@@ -1,0 +1,22 @@
+<div>
+  <h1><b>Novo Contato</b></h1>
+    --- CRIE SEU FORM AQUI ---
+</div>
+<hr>
+<div>
+<table class="table table-striped">
+  <title>Contatos</title>
+    <thead>
+        <tr>
+            <th>Telefone</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let contato of contatos">
+            <td>{{contato.numeroTelefone}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">

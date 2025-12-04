@@ -8,6 +8,8 @@
             <th>RG</th>
             <th>CPF</th>
             <th>Editar</th>
+            <th>Endereços</th>
+            <th>Contatos</th>
             <th>Excluir</th>
         </tr>
     </thead>
@@ -20,6 +22,8 @@
             <td>{{usuario.rg}}</td>
             <td>{{usuario.cpf}}</td>
             <td><button class="btn btn-outline-primary" (click)="abrirEdicao(usuario.id)"><i class="bi bi-pencil"></i></button></td>
+            <td><button class="btn btn-outline-primary" (click)="abrirEnderecos(usuario.id)"><i class="bi bi-house"></i></button></td>
+            <td><button class="btn btn-outline-primary" (click)="abrirContatos(usuario.id)"><i class="bi bi-phone"></i></button></td>
             <td><button class="btn btn-outline-danger" (click)="deletarUsuario(usuario.id, usuario.nome)"><i class="bi bi-trash"></i></button></td>
             <td></td>
         </tr>

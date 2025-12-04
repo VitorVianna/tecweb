@@ -1,0 +1,34 @@
+<div>
+  <h1><b>Novo Endereço</b></h1>
+    --- CRIE SEU FORM AQUI ---
+</div>
+<hr>
+<div>
+<table class="table table-striped">
+  <title>Endereços</title>
+    <thead>
+        <tr>
+            <th>CEP</th>
+            <th>Rua</th>
+            <th>Número</th>
+            <th>Complemento</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let endereco of enderecos">
+            <td>{{endereco.cep}}</td>
+            <td>{{endereco.rua}}</td>
+            <td>{{endereco.numero}}</td>
+            <td>{{endereco.complemento}}</td>
+            <td>{{endereco.bairro}}</td>
+            <td>{{endereco.cidade}}</td>
+            <td>{{endereco.estado}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">

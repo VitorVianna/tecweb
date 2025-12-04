@@ -34,4 +34,11 @@ export class ListaUsuarioComponent implements OnInit{
     }
   }
 
+  abrirEnderecos(id: number){
+    this.router.navigate(['/endereco-usuario',id]);
+  }
+
+  abrirContatos(id: number){
+    this.router.navigate(['/contato-usuario',id]);
+  }
 }
